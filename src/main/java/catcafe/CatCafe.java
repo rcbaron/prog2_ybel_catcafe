@@ -29,22 +29,6 @@ public class CatCafe {
         return clowder.size();
     }
 
-    /**
-     * Pick up the first cat in the café with a given name.
-     *
-     * @param name name of the cat
-     * @return cat with the given name
-     */
-    public FelineOverLord getCatByName(String name) {
-        if (name == null) return null;
-
-        for (FelineOverLord c : clowder) {
-            if (c.name().equals(name)) return c;
-        }
-
-        return null;
-    }
-
     /** Return Optional for the first cat in the café with a given name.
      *
      * @param name name of the Cat
@@ -56,24 +40,6 @@ public class CatCafe {
         return clowder.stream()
             .filter(cat -> name.equals(cat.name()))
             .findFirst();
-    }
-
-    /**
-     * Pick up the first cat in the café with a weight within the specified limits.
-     *
-     * @param minWeight lower weight limit (inclusive)
-     * @param maxWeight upper weight limit (exclusive)
-     * @return cat within the weight limits
-     */
-    public FelineOverLord getCatByWeight(int minWeight, int maxWeight) {
-        if (minWeight < 0) return null;
-        if (maxWeight < minWeight) return null;
-
-        for (FelineOverLord c : clowder) {
-            if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
-        }
-
-        return null;
     }
 
     /** Return Optional for the first cat with a weight between specified limits.
