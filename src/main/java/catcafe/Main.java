@@ -1,4 +1,5 @@
 package catcafe;
+import tree.*;
 
 /** Starter for the cat-café task. */
 public class Main {
@@ -28,5 +29,11 @@ public class Main {
         cafe.getCatByNameOptional("Miss Chief Sooky").ifPresent(
             cat -> System.out.println("Name: 'Miss Chief Sooky': " + cat)
         );
+
+        InOrderVisitor<FelineOverLord> inorder = new InOrderVisitor<>();
+        PostOrderVisitor<FelineOverLord> postorder = new PostOrderVisitor<>();
+        System.out.println("-------------------------------------------");
+        System.out.println("Inorder: " + cafe.accept(inorder));
+        System.out.println("Postorder: " + cafe.accept(postorder));
     }
 }
