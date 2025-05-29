@@ -17,7 +17,7 @@ class CatCafeTest {
         cafe.addCat(new FelineOverLord("Tiger", 5));
         cafe.addCat(new FelineOverLord("Luna", 3));
         cafe.addCat(new FelineOverLord("Simba", 7));
-        cafe.addCat(new FelineOverLord("Nala", 5));
+        cafe.addCat(new FelineOverLord("Nala", 1));
     }
 
     // 1. Test: Anzahl Katzen nach dem Hinzufügen
