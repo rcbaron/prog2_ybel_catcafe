@@ -2,6 +2,7 @@ package catcafe;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
 import tree.Empty;
 import tree.Tree;
 import tree.TreeVisitor;
@@ -28,38 +29,32 @@ public class CatCafe {
         return clowder.size();
     }
 
-    /**
-     * Pick up the first cat in the café with a given name.
+    /** Return Optional for the first cat in the café with a given name.
      *
-     * @param name name of the cat
-     * @return cat with the given name
+     * @param name name of the Cat
+     * @return Optional with found cat, else empty Optional
      */
-    public FelineOverLord getCatByName(String name) {
-        if (name == null) return null;
+    public Optional<FelineOverLord> getCatByNameOptional(String name) {
+        if (name == null) return Optional.empty();
 
-        for (FelineOverLord c : clowder) {
-            if (c.name().equals(name)) return c;
-        }
-
-        return null;
+        return clowder.stream()
+            .filter(cat -> name.equals(cat.name()))
+            .findFirst();
     }
 
-    /**
-     * Pick up the first cat in the café with a weight within the specified limits.
+    /** Return Optional for the first cat with a weight between specified limits.
      *
-     * @param minWeight lower weight limit (inclusive)
-     * @param maxWeight upper weight limit (exclusive)
-     * @return cat within the weight limits
+     * @param minWeight lower weight limit
+     * @param maxWeight upper weight limit
+     * @return Optional of cat within weight limits, else empty Optional
      */
-    public FelineOverLord getCatByWeight(int minWeight, int maxWeight) {
-        if (minWeight < 0) return null;
-        if (maxWeight < minWeight) return null;
+    public Optional<FelineOverLord> getCatByWeightOptional(int minWeight, int maxWeight) {
+        if (minWeight < 0) return Optional.empty();
+        if (maxWeight < minWeight) return Optional.empty();
 
-        for (FelineOverLord c : clowder) {
-            if (c.weight() >= minWeight && c.weight() < maxWeight) return c;
-        }
-
-        return null;
+        return clowder.stream()
+            .filter(cat -> cat.weight() >= minWeight && cat.weight() < maxWeight)
+            .findFirst();
     }
 
     /**
